@@ -1,4 +1,6 @@
 /**index.wxss**/
+
+/*
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -15,7 +17,9 @@
 .userinfo-nickname {
   color: #aaa;
 }
-
+*/
 .usermotto {
-  margin-top: 200px;
+  margin-top: 20px;
+  
+  
 }
