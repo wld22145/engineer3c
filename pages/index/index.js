@@ -1,60 +1,58 @@
-//index.js
-//获取应用实例
-const app = getApp()
-
 Page({
+  onReady(res) {
+    this.ctx = wx.createLivePusherContext('pusher')
+  },
   statechange(e) {
-    console.log('live-player code:', e.detail.code)
+    console.log('live-pusher code:', e.detail.code)
   },
-  error(e) {
-    console.error('live-player error:', e.detail.errMsg)
-  },
-  data: {
-    motto: 'live pusher',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+  bindStart() {
+    this.ctx.start({
+      success: res => {
+        console.log('start success')
+      },
+      fail: res => {
+        console.log('start fail')
+      }
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
+  bindPause() {
+    this.ctx.pause({
+      success: res => {
+        console.log('pause success')
+      },
+      fail: res => {
+        console.log('pause fail')
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    })
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+  bindStop() {
+    this.ctx.stop({
+      success: res => {
+        console.log('stop success')
+      },
+      fail: res => {
+        console.log('stop fail')
+      }
+    })
+  },
+  bindResume() {
+    this.ctx.resume({
+      success: res => {
+        console.log('resume success')
+      },
+      fail: res => {
+        console.log('resume fail')
+      }
+    })
+  },
+  bindSwitchCamera() {
+    this.ctx.switchCamera({
+      success: res => {
+        console.log('switchCamera success')
+      },
+      fail: res => {
+        console.log('switchCamera fail')
+      }
     })
   }
 })
