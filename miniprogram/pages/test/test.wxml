@@ -1,0 +1,11 @@
+<view class="container">
+  <view>{{text}}</view>
+</view>
+
+<view>
+  <button class="start-check" bindtap="onStartCheck">start check</button>
+</view>
+
+<view>
+  <button class="pause-check" bindtap="onPauseCheck">pause check</button>
+</view>

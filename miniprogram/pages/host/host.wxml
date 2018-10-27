@@ -1,0 +1,10 @@
+<view class="container">
+  <view>{{text}}</view>
+</view>
+
+<view>
+  <button class="go-left" bindtap="onGoLeft">go left</button>
+</view>
+
+
+

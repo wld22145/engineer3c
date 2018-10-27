@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container">
+
+  <!-- 用户 openid -->
+  <view class="userinfo">
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+    ></button>
+  </view>
+</view>
+
+
+<view>
+  <navigator class="navigator" url="/pages/host/host" hover-class="navigator-hover">host</navigator>
+</view>
+
+<view>
+  <navigator class="navigator" url="/pages/slave/slave" hover-class="navigator-hover">slave</navigator>
+</view>
+
+<view>
+  <navigator class="navigator" url="/pages/test/test" hover-class="navigator-hover">test</navigator>
+</view>

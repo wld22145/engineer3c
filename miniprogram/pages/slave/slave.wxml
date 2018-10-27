@@ -1,0 +1,11 @@
+<view class="container">
+  <view>{{text}}</view>
+</view>
+
+<view>
+  <button class="listen" bindtap="onListen">listen</button>
+</view>
+
+<view>
+  <button class="start-listening" bindtap="onStartListen">start listening</button>
+</view>
