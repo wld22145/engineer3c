@@ -16,7 +16,6 @@ function getInstruction(){
 // remove it from database
 function removeInstruction(input){
   return new Promise(function(resolve,reject){
-    console.log(input)
     const targetId = input[0]["_id"]
     db.collection('instructions').doc(targetId).remove()
     resolve(input[0])
@@ -34,7 +33,7 @@ function operateInstruction(instruction){
 function listen () {
   getInstruction().then(removeInstruction).then(function (result){
     operateInstruction(result);
-  }).catch(e=>{console.error(e)});
+  }).catch(e=>{});
 }
 
 //keep listening
