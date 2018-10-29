@@ -1,4 +1,4 @@
-const db = wx.cloud.database()
+const db = wx.cloud.database({ env: "test-d49d77" });
 var latestInstruction;
 var latestIndex = 0;
 var latestTime;

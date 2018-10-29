@@ -1,4 +1,4 @@
-const db = wx.cloud.database();
+const db = wx.cloud.database({ env:"test-d49d77"});
 
 
 function goLeft(){
