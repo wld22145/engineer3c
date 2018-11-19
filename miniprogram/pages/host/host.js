@@ -1,4 +1,4 @@
-var functions = require('functions.js')
+var hostFunction = require('../../utils/hostFunction.js');
 
 Page({
   data: {
@@ -6,6 +6,6 @@ Page({
   },
   onGoLeft: function () {
     console.log("left button");
-    functions.goLeft();
+    hostFunction.goLeft();
   },
 })
