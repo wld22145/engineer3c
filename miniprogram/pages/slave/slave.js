@@ -1,4 +1,4 @@
-var slaveFunctions = require("../../utils/slaveFunction.js")
+var slaveFunction = require("../../utils/slaveFunction.js")
 
 Page({
   data: {
@@ -8,11 +8,11 @@ Page({
 
   onListen: function () {
     console.log("listen button");
-    slaveFunctions.listen();
+    slaveFunction.listen();
   },
 
   onStartListen: function () {
     console.log("start listening button");
-    slaveFunctions.startListening();
+    slaveFunction.startListening();
   },
 })
