@@ -34,5 +34,9 @@
 </view>
 
 <view>
+  <navigator class="navigator" url="/pages/fourdirections/fourdirections" hover-class="navigator-hover">fourdirections</navigator>
+</view>
+
+<view>
   <navigator class="navigator" url="/pages/canvas/canvas" hover-class="navigator-hover">canvas</navigator>
 </view>
