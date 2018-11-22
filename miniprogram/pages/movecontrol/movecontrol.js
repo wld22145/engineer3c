@@ -1,38 +1,41 @@
-const gapTime = 500;
-var timer;
-
 Page({
-  data: {
-    text: "test"
+  start: function (e) {
+    var ctx = wx.createCanvasContext('myCanvas')
+    ctx.setFillStyle('red')
+    ctx.beginPath(0)
+    ctx.arc(e.touches[0].x, e.touches[0].y, 20, 0, Math.PI * 2)
+    ctx.setFillStyle('red')
+    ctx.setStrokeStyle('rgba(1,1,1,0)')
+    ctx.fill()
+    ctx.stroke()
+    ctx.draw()
+    if(e.touches[0].x<100)
+      console.log("go left")
+    if(e.touches[0].x>200)
+      console.log("go right")
+    if(e.touches[0].y<100)
+      console.log("go ahead")
+    if(e.touches[0].y>200)
+      console.log("go back")
   },
-  onStartCheck: function () {
-    console.log("start button");
-    Countdown();
-  },
-  onPauseCheck: function () {
-    console.log("pause button");
-    clearTimeout(timer);
-  },
-  AcceleratorCheck: function () {
-    console.log("Accelerator start");
-    wx.startAccelerometer({
-      interval: gapTime
-    })
-    wx.onAccelerometerChange(function (res) {
-      console.log(res.x)
-      console.log(res.y)
-      console.log(res.z)
-    })
-  },
-  AcceleratorPause: function () {
-    console.log("Accelerator pause");
-    wx.stopAccelerometer();
+  move: function (e) {
+    var ctx = wx.createCanvasContext('myCanvas')
+    ctx.setFillStyle('red')
+    ctx.beginPath(0)
+    ctx.arc(e.touches[0].x, e.touches[0].y, 20, 0, Math.PI * 2)
+    ctx.setFillStyle('red')
+    ctx.setStrokeStyle('rgba(1,1,1,0)')
+    ctx.fill()
+    ctx.stroke()
+    ctx.draw()
+    if (e.touches[0].x < 100)
+      console.log("go left")
+    if (e.touches[0].x > 200)
+      console.log("go right")
+    if (e.touches[0].y < 100)
+      console.log("go ahead")
+    if (e.touches[0].y > 200)
+      console.log("go back")
   },
 })
 
-function Countdown() {
-  timer = setTimeout(function () {
-    console.log("----count down----");
-    Countdown();
-  }, gapTime);
-};

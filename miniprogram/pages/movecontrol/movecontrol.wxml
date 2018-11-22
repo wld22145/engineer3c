@@ -1,19 +1,5 @@
-<view class="container">
-  <view>{{text}}</view>
-</view>
-
-<view>
-  <button class="start-check" bindtap="onStartCheck">start check</button>
-</view>
-
-<view>
-  <button class="pause-check" bindtap="onPauseCheck">pause check</button>
-</view>
-
-<view>
-  <button class="AcceleratorCheck" bindtap="AcceleratorCheck">Accelerator Check</button>
-</view>
-
-<view>
-  <button class="AcceleratorPause" bindtap="AcceleratorPause">Accelerator Pause</button>
-</view>
+<canvas canvas-id="myCanvas"
+  style="margin: 5px; border:1px solid #d3d3d3;"
+  class="circle"
+  bindtouchstart="start"
+  bindtouchmove="move"/> 

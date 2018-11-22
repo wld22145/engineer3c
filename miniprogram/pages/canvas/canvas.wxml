@@ -1,7 +1,8 @@
-<button type="primary" class="circle" bindtouchstart="mytouchstart" bindtouchmove="mytouchstart"  bindtouchend="mytouchend" >Content</button>
-
-<view class="page-body">
-  <view class="page-body-wrapper">
+<view class="page-body-wrapper">
+    <button type="primary" class="circle" bindtouchstart="mytouchstart" bindtouchmove="mytouchstart"  >Content</button>
     <canvas canvas-id="canvas" class="canvas"></canvas>
-  </view>
 </view>
+
+
+
+
