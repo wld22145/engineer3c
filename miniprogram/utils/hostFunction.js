@@ -16,6 +16,10 @@ function goBackward() {
   insertInstruction("backward");
 }
 
+function halt() {
+  insertInstruction("halt");
+}
+
 function insertInstruction(instruction) {
   return db.collection('instructions').add({
     data: {
