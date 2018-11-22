@@ -24,3 +24,15 @@
 <view>
   <navigator class="navigator" url="/pages/test/test" hover-class="navigator-hover">test</navigator>
 </view>
+
+<view>
+  <navigator class="navigator" url="/pages/movecontrol/movecontrol" hover-class="navigator-hover">movecontrol</navigator>
+</view>
+
+<view>
+  <navigator class="navigator" url="/pages/gravity/gravity" hover-class="navigator-hover">gravity</navigator>
+</view>
+
+<view>
+  <navigator class="navigator" url="/pages/canvas/canvas" hover-class="navigator-hover">canvas</navigator>
+</view>

@@ -3,7 +3,10 @@
     "pages/index/index",
     "pages/host/host",
     "pages/slave/slave",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/canvas/canvas",
+    "pages/gravity/gravity",
+    "pages/movecontrol/movecontrol"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -1,0 +1,11 @@
+<view class="container">
+  <view>{{text}}</view>
+</view>
+
+<view>
+  <button class="AcceleratorCheck" bindtap="AcceleratorCheck">Accelerator Check</button>
+</view>
+
+<view>
+  <button class="AcceleratorPause" bindtap="AcceleratorPause">Accelerator Pause</button>
+</view>
