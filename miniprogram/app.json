@@ -6,6 +6,7 @@
     "pages/test/test",
     "pages/canvas/canvas",
     "pages/gravity/gravity",
+    "pages/gesture/gesture",
     "pages/movecontrol/movecontrol",
     "pages/fourdirections/fourdirections"
   ],

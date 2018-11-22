@@ -1,0 +1,6 @@
+<canvas canvas-id="myCanvas"
+  style="margin: 5px; border:1px solid #d3d3d3;"
+  class="circle"
+  bindtouchstart="start"
+  bindtouchmove="move"
+  bindtouchend="end"/> 

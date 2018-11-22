@@ -40,3 +40,7 @@
 <view>
   <navigator class="navigator" url="/pages/canvas/canvas" hover-class="navigator-hover">canvas</navigator>
 </view>
+
+<view>
+  <navigator class="navigator" url="/pages/gesture/gesture" hover-class="navigator-hover">gesture</navigator>
+</view>
