@@ -1,8 +1,4 @@
 const db = wx.cloud.database({ env: "test-d49d77" });
-var latestInstruction;
-var latestIndex = 0;
-var latestTime;
-var instruction;
 
 // get earliest instruction
 function getInstruction() {
