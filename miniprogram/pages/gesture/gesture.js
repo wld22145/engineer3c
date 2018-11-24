@@ -12,50 +12,42 @@ Page({
   end: function(){
     // console.log("startPoint:", this.data.startPoint[0], this.data.startPoint[1])
     // console.log("endPoint:", this.data.endPoint[0], this.data.endPoint[1])
-    if (this.data.endPoint[0] == 0 && this.data.endPoint[1] == 0)
+    if (this.data.endPoint[0] == 0 && this.data.endPoint[1] == 1)
+      return 0;
+    
+    if (this.data.startPoint[1] > this.data.endPoint[1] && this.data.startPoint[1] - this.data.endPoint[1] > Math.abs(this.data.startPoint[0] - this.data.endPoint[0]))
     {
       const ctx = wx.createCanvasContext('myCanvas')
       ctx.setFontSize(50)
-      ctx.fillText('停止', 100, 150)
+      ctx.fillText('前进', 100, 150)
       ctx.draw()
-      console.log("halt")
-      return;
+      console.log("go ahead")
     }
-    else
+    if (this.data.startPoint[1] < this.data.endPoint[1] && this.data.endPoint[1] - this.data.startPoint[1] > Math.abs(this.data.startPoint[0] - this.data.endPoint[0]))
     {
-      if (this.data.startPoint[1] > this.data.endPoint[1] && this.data.startPoint[1] - this.data.endPoint[1] > Math.abs(this.data.startPoint[0] - this.data.endPoint[0]))
-      {
-        const ctx = wx.createCanvasContext('myCanvas')
-        ctx.setFontSize(50)
-        ctx.fillText('前进', 100, 150)
-        ctx.draw()
-        console.log("go ahead")
-      }
-      if (this.data.startPoint[1] < this.data.endPoint[1] && this.data.endPoint[1] - this.data.startPoint[1] > Math.abs(this.data.startPoint[0] - this.data.endPoint[0]))
-      {
-        const ctx = wx.createCanvasContext('myCanvas')
-        ctx.setFontSize(50)
-        ctx.fillText('后退', 100, 150)
-        ctx.draw()
-        console.log("go back")
-      }
-      if (this.data.startPoint[0] > this.data.endPoint[0] && this.data.startPoint[0] - this.data.endPoint[0] > Math.abs(this.data.startPoint[1] - this.data.endPoint[1]))
-      {
-        const ctx = wx.createCanvasContext('myCanvas')
-        ctx.setFontSize(50)
-        ctx.fillText('左转', 100, 150)
-        ctx.draw()
-        console.log("go left")
-      }
-      if (this.data.startPoint[0] < this.data.endPoint[0] && this.data.endPoint[0] - this.data.startPoint[0] > Math.abs(this.data.startPoint[1] - this.data.endPoint[1]))
-      {
-        const ctx = wx.createCanvasContext('myCanvas')
-        ctx.setFontSize(50)
-        ctx.fillText('右转', 100, 150)
-        ctx.draw()
-        console.log("go right")
-      }
+      const ctx = wx.createCanvasContext('myCanvas')
+      ctx.setFontSize(50)
+      ctx.fillText('后退', 100, 150)
+      ctx.draw()
+      console.log("go back")
     }
+    if (this.data.startPoint[0] > this.data.endPoint[0] && this.data.startPoint[0] - this.data.endPoint[0] > Math.abs(this.data.startPoint[1] - this.data.endPoint[1]))
+    {
+      const ctx = wx.createCanvasContext('myCanvas')
+      ctx.setFontSize(50)
+      ctx.fillText('左转', 100, 150)
+      ctx.draw()
+      console.log("go left")
+    }
+    if (this.data.startPoint[0] < this.data.endPoint[0] && this.data.endPoint[0] - this.data.startPoint[0] > Math.abs(this.data.startPoint[1] - this.data.endPoint[1]))
+    {
+      const ctx = wx.createCanvasContext('myCanvas')
+      ctx.setFontSize(50)
+      ctx.fillText('右转', 100, 150)
+      ctx.draw()
+      console.log("go right")
+    }
+      
 
     this.setData({ startPoint: [0, 0] })
     this.setData({ endPoint: [0, 0] })

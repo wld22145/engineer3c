@@ -8,7 +8,8 @@
     "pages/gravity/gravity",
     "pages/gesture/gesture",
     "pages/movecontrol/movecontrol",
-    "pages/fourdirections/fourdirections"
+    "pages/fourdirections/fourdirections",
+    "pages/asr/asr"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

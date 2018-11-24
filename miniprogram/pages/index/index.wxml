@@ -44,3 +44,7 @@
 <view>
   <navigator class="navigator" url="/pages/gesture/gesture" hover-class="navigator-hover">gesture</navigator>
 </view>
+
+<view>
+  <navigator class="navigator" url="/pages/asr/asr" hover-class="navigator-hover">asr</navigator>
+</view>
