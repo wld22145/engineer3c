@@ -1,0 +1,19 @@
+.relative {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.pic_background {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 190px;
+  left: 110px;
+}
+.pic_tou {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 200px;
+  left: 120px;
+}

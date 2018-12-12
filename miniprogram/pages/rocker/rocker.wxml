@@ -1,0 +1,9 @@
+<!--pages/rocker/rocker.wxml-->
+
+<view class="relative">
+  <!-- 背景图片 -->
+  <image style="width: 100px; height: 100px;" class="pic_background" src="../../images/yaogan_di.png"></image>
+  <!-- 摇杆图片 -->
+  <image style="width: 80px; height: 80px;left:{{leftLooks}}px;top:{{topLooks}}px;" bindtouchend='ImageReturn' bindtouchmove='ImageTouchMove' class="pic_tou" src="../../images/yaogan_tou.png " bindtap="ImageTouch"></image>
+</view>
+

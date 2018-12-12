@@ -9,8 +9,8 @@
     "pages/movecontrol/movecontrol",
     "pages/fourdirections/fourdirections",
     "pages/asr/asr",
-    "pages/bluetooth/bluetooth"
-    
+    "pages/bluetooth/bluetooth",
+    "pages/rocker/rocker"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

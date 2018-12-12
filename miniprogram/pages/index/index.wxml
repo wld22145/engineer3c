@@ -38,11 +38,27 @@
 </view>
 
 <view>
+  <navigator class="navigator" url="/pages/canvas/canvas" hover-class="navigator-hover">canvas</navigator>
+</view>
+
+<view>
   <navigator class="navigator" url="/pages/gesture/gesture" hover-class="navigator-hover">gesture</navigator>
 </view>
 
 <view>
   <navigator class="navigator" url="/pages/asr/asr" hover-class="navigator-hover">asr</navigator>
+</view>
+
+<view>
+  <navigator class="navigator" url="/pages/gesture/gesture" hover-class="navigator-hover">gesture</navigator>
+</view>
+
+<view>
+  <navigator class="navigator" url="/pages/asr/asr" hover-class="navigator-hover">asr</navigator>
+</view>
+
+<view>
+  <navigator class="navigator" url="/pages/rocker/rocker" hover-class="navigator-hover">rocker</navigator>
 </view>
 
 <view>
