@@ -5,15 +5,6 @@
     </view>
   </view>
 
-  <view class="page-section">
-    <text selectable="true" class="text-head">语义理解基于olami.ai，作者QQ：404499164</text>
-  </view>
-
-  <view class="little-gap-top button-selection2 button-show bottom-button">
-    <button size="mini" type="default" open-type="contact">联系作者</button>
-    <button size="mini" type="default" bindtap="turnToOld">切老版本</button>
-    <button size="mini" type="default" open-type="share">帮忙分享</button>
-  </view>
 
   <view class="page-section">
     <view class="doommview">

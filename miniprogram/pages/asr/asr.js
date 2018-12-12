@@ -1,8 +1,6 @@
 var app = getApp()
 
 var UTIL = require('../../utils/util.js');
-var GUID = require('../../utils/GUID.js');
-var NLI = require('../../utils/NLI.js');
 
 const appkey = require('../../config').appkey
 const appsecret = require('../../config').appsecret
@@ -25,7 +23,6 @@ var pageSelf = undefined;
 var doommList = [];
 class Doomm {
   constructor() {
-    this.text = UTIL.getRandomItem(app.globalData.corpus);
     this.top = Math.ceil(Math.random() * 40);
     this.time = Math.ceil(Math.random() * 8 + 6);
     this.color = getRandomColor();
@@ -75,13 +72,13 @@ Page({
 
     //onLoad中为录音接口注册两个回调函数，主要是onStop，拿到录音mp3文件的文件名（不用在意文件后辍是.dat还是.mp3，后辍不决定音频格式）
     mp3Recorder.onStart(() => {
-      UTIL.log('mp3Recorder.onStart()...')
+      console.log('mp3Recorder.onStart()...')
     })
     mp3Recorder.onStop((res) => {
-      UTIL.log('mp3Recorder.onStop() ' + res)
+      console.log('mp3Recorder.onStop() ' + res)
       const { tempFilePath } = res
       var urls = "https://api.happycxz.com/wxapp/mp32asr";
-      UTIL.log('mp3Recorder.onStop() tempFilePath:' + tempFilePath)
+      console.log('mp3Recorder.onStop() tempFilePath:' + tempFilePath)
       processFileUploadForAsr(urls, tempFilePath, this);
     })
   },
@@ -89,7 +86,7 @@ Page({
   /////////////////////////////////////////////////////////////// 以下是调用新接口实现的录音，录出来的是 mp3
   touchdown: function () {
   //touchdown_mp3: function () {
-    UTIL.log("mp3Recorder.start with" + mp3RecoderOptions)
+    console.log("mp3Recorder.start with" + mp3RecoderOptions)
     var _this = this;
     speaking.call(this);
     this.setData({
@@ -99,76 +96,12 @@ Page({
   },
   touchup: function () {
   //touchup_mp3: function () {
-    UTIL.log("mp3Recorder.stop")
+    console.log("mp3Recorder.stop")
     this.setData({
       isSpeaking: false,
     })
     mp3Recorder.stop();
   },
-
-
-  //切换到老版本
-  turnToOld: function () {
-    wx.navigateTo({
-      url: '../index/index',
-    })
-  },
-
-  /////////////////////////////////////////////////////////////// 以下是调用老接口实现的录音，录出来的是 silk_v3
-  //手指按下 
-  touchdown_silk: function () {
-  //touchdown: function () {
-    UTIL.log("手指按下了... new date : " + new Date)
-    var _this = this;
-    speaking.call(this);
-    this.setData({
-      isSpeaking: true
-    })
-    //开始录音 
-    wx.startRecord({
-      success: function (res) {
-        //临时路径,下次进入小程序时无法正常使用
-        var tempFilePath = res.tempFilePath;
-        UTIL.log('record SUCCESS file path:' + tempFilePath)
-        _this.setData({
-          recordPath: tempFilePath
-        });
-      },
-      fail: function (res) {
-        //录音失败 
-        wx.showModal({
-          title: '提示',
-          content: '录音的姿势不对!',
-          showCancel: false,
-          success: function (res) {
-            if (res.confirm) {
-              UTIL.log('用户点击确定')
-              return
-            }
-          }
-        })
-      }
-    })
-  },
-  //手指抬起 
-  touchup_silk: function () {
-  //touchup: function () {
-    UTIL.log("手指抬起了...")
-    this.setData({
-      isSpeaking: false,
-    })
-    clearInterval(this.timer)
-    wx.stopRecord()
-
-    var _this = this
-    setTimeout(function () {
-      var urls = "https://api.happycxz.com/wxapp/silk2asr/";
-      UTIL.log(_this.data.recordPath);
-      processFileUploadForAsr(urls, _this.data.recordPath, _this);
-    }, 1000)
-  },
-
-
 })
 
 //上传录音文件到 api.happycxz.com 接口，处理语音识别和语义，结果输出到界面
@@ -180,29 +113,32 @@ function processFileUploadForAsr(urls, filePath, _this) {
     formData: { "appKey": appkey, "appSecret": appsecret, "userId": UTIL.getUserUnique() },
     header: { 'content-type': 'multipart/form-data' },
     success: function (res) {
-      UTIL.log('res.data:' + res.data);
-
-      var nliResult = getNliFromResult(res.data);
-      UTIL.log('nliResult:' + nliResult);
-      var stt = getSttFromResult(res.data);
-      UTIL.log('stt:' + stt);
+      console.log('res1.data:' + res.data);
+    
+      var stt = getSttFromResult(res.data)
+      console.log('stt:' + stt + typeof stt);
 
       var sentenceResult;
-      try {
-        sentenceResult = NLI.getSentenceFromNliResult(nliResult);
+      try {        
+        var length = "前".length
+        var sentenceResult = stt.substring(0, length)
+        console.log("tmp length" + length)
+        console.log("tmp string" + sentenceResult)
+        if (setenceResult != "前" && sentenceResult != "后" && sentenceResult != "左" && sentenceResult !="右")
+          sentenceReuslt = "指令不正确！"
       } catch (e) {
-        UTIL.log('touchup() 错误' + e.message + '发生在' + e.lineNumber + '行');
-        sentenceResult = '没明白你说的，换个话题？'
+        sentenceResult = "指令不正确！"
       }
 
-      var lastOutput = "==>语音识别结果：\n" + stt + "\n\n==>语义处理结果：\n" + sentenceResult;
+      var lastOutput = "==>语音识别结果：\n" + stt + "\n\n==>发送指令：\n" + sentenceResult;
       _this.setData({
         outputTxt: lastOutput,
       });
       wx.hideToast();
     },
+
     fail: function (res) {
-      UTIL.log(res);
+      console.log(res);
       wx.showModal({
         title: '提示',
         content: "网络请求失败，请确保网络是否正常",
@@ -213,12 +149,6 @@ function processFileUploadForAsr(urls, filePath, _this) {
       wx.hideToast();
     }
   });
-}
-
-function getNliFromResult(res_data) {
-  var res_data_json = JSON.parse(res_data);
-  var res_data_result_json = JSON.parse(res_data_json.result);
-  return res_data_result_json.nli;
 }
 
 function getSttFromResult(res_data) {
