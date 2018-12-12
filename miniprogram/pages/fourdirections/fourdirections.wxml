@@ -1,6 +1,8 @@
 <view>
-  <button class="upBtn" bindtap="ahead"  bindtouchmove="ahead">上</button>
-  <button class="leftBtn" bindtap="left" bindtouchmove="left">左</button>
-  <button class="rightBtn" bindtap="right" bindtouchmove="right">右</button>
-  <button class="downBtn" bindtap="back"bindtouchmove="back">下</button>
+  <button class="upBtn" bindtap="ahead">上</button>
+  <button class="leftBtn" bindtap="left">左</button>
+  <button class="rightBtn" bindtap="right">右</button>
+    <button class="stopBtn" bindtap="stop">停</button>
+  <button class="downBtn" bindtap="back">下</button>
+
 </view>
