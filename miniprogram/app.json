@@ -4,12 +4,13 @@
     "pages/host/host",
     "pages/slave/slave",
     "pages/test/test",
-    "pages/canvas/canvas",
     "pages/gravity/gravity",
     "pages/gesture/gesture",
     "pages/movecontrol/movecontrol",
     "pages/fourdirections/fourdirections",
-    "pages/asr/asr"
+    "pages/asr/asr",
+    "pages/bluetooth/bluetooth"
+    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
