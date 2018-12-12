@@ -1,17 +1,3 @@
-/**
- * 作者：happycxz
- * 最后更新时间：2017.11.09
- * 源码分享链接：http://www.happycxz.com/m/?p=125
- *
- * https的silk语音识别API（专供微信小程序调用）：https://api.happycxz.com/wxapp/silk2asr
- * https的mp3语音识别API（专供微信小程序调用）：https://api.happycxz.com/wxapp/mp32asr
- * 该API服务搭建全过程解析及源码分享贴：http://blog.csdn.net/happycxz/article/details/78016299
- * 需要使用此API请联系作者QQ：404499164
- * 
- * 遵循开放、分享、自由、免费的精神，把开源坚持到底
- */
-
-//获取应用实例 
 var app = getApp()
 
 var UTIL = require('../../utils/util.js');
@@ -21,7 +7,6 @@ var NLI = require('../../utils/NLI.js');
 const appkey = require('../../config').appkey
 const appsecret = require('../../config').appsecret
 
-//微信小程序新录音接口，录出来的是aac或者mp3，这里要录成mp3
 const mp3Recorder = wx.getRecorderManager()
 const mp3RecoderOptions = {
   duration: 60000,

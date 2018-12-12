@@ -12,8 +12,15 @@ Page({
   end: function(){
     // console.log("startPoint:", this.data.startPoint[0], this.data.startPoint[1])
     // console.log("endPoint:", this.data.endPoint[0], this.data.endPoint[1])
-    if (this.data.endPoint[0] == 0 && this.data.endPoint[1] == 1)
+    if (this.data.endPoint[0] == 0 && this.data.endPoint[1] == 0 || Math.abs(this.data.endPoint[0] - this.data.startPoint[0]) < 30 && Math.abs(this.data.endPoint[1] - this.data.startPoint[1]) < 30)
+    {
+      const ctx = wx.createCanvasContext('myCanvas')
+      ctx.setFontSize(50)
+      ctx.fillText('停止', 100, 150)
+      ctx.draw()
+      console.log("stop")
       return 0;
+    }
     
     if (this.data.startPoint[1] > this.data.endPoint[1] && this.data.startPoint[1] - this.data.endPoint[1] > Math.abs(this.data.startPoint[0] - this.data.endPoint[0]))
     {
