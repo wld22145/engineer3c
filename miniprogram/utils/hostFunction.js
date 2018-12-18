@@ -1,20 +1,13 @@
 const db = wx.cloud.database({ env: "test-d49d77" });
 
-function goLeft() {
-  insertInstruction("left");
+function testInstruction() {
+  insertInstruction("test instruction");
 }
 
-function goRight() {
-  insertInstruction("right");
+function photo() {
+  insertInstruction("photo");
 }
 
-function goForward() {
-  insertInstruction("forward");
-}
-
-function goBackward() {
-  insertInstruction("backward");
-}
 
 function insertInstruction(instruction) {
   return db.collection('instructions').add({
@@ -29,8 +22,7 @@ function insertInstruction(instruction) {
 }
 
 module.exports = {
-  goLeft: goLeft,
-  goRight:goRight,
-  goForward: goForward,
-  goBackward: goBackward
+  testInstruction: testInstruction,
+  photo:photo,
+
 }

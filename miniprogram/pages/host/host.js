@@ -4,8 +4,11 @@ Page({
   data: {
     text: "host"
   },
-  onGoLeft: function () {
-    console.log("left button");
-    hostFunction.goLeft();
+  testInstruction : function() {
+    hostFunction.testInstruction()
   },
+
+  
+
+
 })

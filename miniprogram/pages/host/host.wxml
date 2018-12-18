@@ -26,5 +26,9 @@
   <navigator class="navigator" url="/pages/bluetooth/bluetooth" hover-class="navigator-hover">bluetooth</navigator>
 </view>
 
+<view>
+  <button class="testInstruction" bindtap="testInstruction">insert test instruction</button>
+</view>
+
 
 

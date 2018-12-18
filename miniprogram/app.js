@@ -38,6 +38,10 @@ App({
     connectedDeviceId: '',
     services: {},
     characteristics: {},
-    connected: true
+    connected: true,
+    lastInstruction: {
+      time: Date(),
+      instruction: '',
+    },
   }
 })
