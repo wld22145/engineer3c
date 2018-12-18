@@ -1,4 +1,6 @@
-const gapTime = 500;
+var bluetoothFunction = require('../../utils/bluetoothFunction.js');
+
+const gapTime = 1000;
 var timer;
 
 Page({
@@ -14,12 +16,16 @@ Page({
     wx.onAccelerometerChange(function (res) {
       if(res.x<-0.5)
         console.log("go left")
+        bluetoothFunction.goLeft()
       if(res.x>0.5)
         console.log("go right")
+        bluetoothFunction.goRight()
       if(res.y<-0.5)
         console.log("go back")
+        bluetoothFunction.goBack()
       if(res.y>0.5)
         console.log("go ahead")
+        bluetoothFunction.goAhead()
 
       // console.log(res.x,res.y,res.z)
     })

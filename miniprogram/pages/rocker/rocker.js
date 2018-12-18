@@ -26,20 +26,20 @@ Page({
     var slope = (movePos.posY - 200) / (movePos.posX - 120 + 0.001);
     if ((slope > 0.25 && movePos.posY < 200) || (slope < -0.25 && movePos.posY < 200)){
       console.log("go ahead")
-      // bluetoothFunction.goAhead()
+      bluetoothFunction.goAhead()
     }
     else if ((slope > 0.25 && movePos.posY > 200) || (slope < -0.25 && movePos.posY > 200)) {
       console.log("go back")
-      // bluetoothFunction.goBack()
+      bluetoothFunction.goBack()
     }
 
     if (slope < 2 && slope > -2 && movePos.posX > 120){
       console.log("go right")
-      // bluetoothFunction.goRight()
+      bluetoothFunction.goRight()
     }
     else if(slope < 2 && slope > -2 && movePos.posX < 120){
       console.log("go left")
-      // bluetoothFunction.goLeft()
+      bluetoothFunction.goLeft()
     }
   },
   //获得触碰位置并且进行数据处理获得触碰位置与拖动范围的交点位置
@@ -80,6 +80,8 @@ Page({
       leftLooks: self.data.StartX,
       topLooks: self.data.StartY,
     })
+    console.log("stop")
+    bluetoothFunction.stop()
   }
 
 })

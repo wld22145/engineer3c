@@ -1,3 +1,5 @@
+var bluetoothFunction = require('../../utils/bluetoothFunction.js');
+
 Page({
   start: function (e) {
     var ctx = wx.createCanvasContext('myCanvas')
@@ -10,12 +12,16 @@ Page({
     ctx.stroke()
     ctx.draw()
     if(e.touches[0].x<100)
+      bluetoothFunction.goLeft()
       console.log("go left")
     if(e.touches[0].x>200)
+      bluetoothFunction.goRight()
       console.log("go right")
     if(e.touches[0].y<100)
+      bluetoothFunction.goAhead()
       console.log("go ahead")
     if(e.touches[0].y>200)
+      bluetoothFunction.goBack()
       console.log("go back")
   },
   move: function (e) {
@@ -29,12 +35,16 @@ Page({
     ctx.stroke()
     ctx.draw()
     if (e.touches[0].x < 100)
+      bluetoothFunction.goLeft()
       console.log("go left")
     if (e.touches[0].x > 200)
+      bluetoothFunction.goRight()
       console.log("go right")
     if (e.touches[0].y < 100)
+      bluetoothFunction.goAhead()
       console.log("go ahead")
     if (e.touches[0].y > 200)
+      bluetoothFunction.goBack()
       console.log("go back")
   },
 })
