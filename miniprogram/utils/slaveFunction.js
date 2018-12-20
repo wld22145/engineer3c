@@ -49,6 +49,22 @@ function operateInstruction(instruction) {
   console.log("operate")
   console.log(instruction)
 
+  switch (instruction) {
+    case "scanQRcode":
+      scanQRcode()
+      break
+    case "startRecording":
+      startRecording()
+      break
+    case "stopRecording":
+      stopRecording()
+      break
+    case "takePhoto":
+      takePhoto()
+      break
+    default:
+      console.log("default")
+  }
 }
 
 // listen once 
@@ -62,6 +78,87 @@ function listen() {
 function startListening() {
   listen()
   setTimeout(startListening, 500)
+}
+
+// scanQRcode
+function scanQRcode() {
+  console.log("scanQRcode")
+  wx.scanCode({
+    success: (res) => {
+      console.log("scanResult")
+      console.log(res.result)
+    },
+    fail: (res) => {
+      console.log(res)
+    }
+  })
+}
+
+// start video recording
+function startRecording() {
+  console.log("startRecording")
+  this.ctx.startRecord({
+    success: (res) => {
+      console.log('startRecord success')
+    }
+  })
+}
+
+// stop video recording
+function stopRecording() {
+  console.log("stopRecording")
+  this.ctx.stopRecord({
+    success: (res) => {
+      this.setData({
+        src: res.tempThumbPath,
+        videoSrc: res.tempVideoPath
+      })
+
+      console.log("upload video")
+      wx.uploadFile({
+        url: '', // sever address // to be filled *********
+        filePath: res.tempVideoPath,
+        name: 'videoFile',
+        success: function (res) {
+          wx.showToast({
+            title: 'upload success',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+      })
+    }
+  })
+}
+
+// take photo
+function takePhoto() {
+  console.log("takePhoto")
+  let that = this
+  let ctx = wx.createCameraContext()
+  ctx.takePhoto({
+    quality: 'high',
+    success: (res) => {
+      console.log(res.tempImagePath)
+      that.setData({
+        src: res.tempImagePath
+      })
+
+      console.log("upload photo")
+      wx.uploadFile({
+        url: '', // sever address // to be filled *********
+        filePath: res.tempImagePath,
+        name: 'imgFile',
+        success: function (res) {
+          wx.showToast({
+            title: 'upload success',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+      })
+    }
+  })
 }
 
 
