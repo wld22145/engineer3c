@@ -9,3 +9,5 @@
 <view>
   <button class="start-listening" bindtap="onStartListen">start listening</button>
 </view>
+
+<camera flash="off" class="camera"></camera>
