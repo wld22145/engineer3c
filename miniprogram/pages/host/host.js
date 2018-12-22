@@ -1,6 +1,7 @@
 var hostFunction = require('../../utils/hostFunction.js');
 const db = wx.cloud.database({ env: "test-d49d77" });
 var app = getApp()
+var flag = true
 
 Page({
   data: {
@@ -8,6 +9,7 @@ Page({
   },
   scanQRcode: function() {
     hostFunction.scanQRcode()
+    flag = true
     keepListenQRcode()
   },
   takePhoto: function () {
@@ -47,20 +49,22 @@ function confirmQRcode(res) {
 
 function listenQRcode(){
   getQRcode().then(confirmQRcode).then(function (result) {
+    flag = false
     wx.showModal({
       title: 'QRcode result',
       content: result.result,
+      showCancel: false,
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')
         }
       }
     })
-    return true
   }).catch(e => { console.error(e) });
 }
 
 function keepListenQRcode() {
-  var result = listenQRcode()
-  if (!result) setTimeout(keepListenQRcode, 2000)
+  listenQRcode()
+  console.log('listen')
+  if (flag) setTimeout(keepListenQRcode, 2000)
 }

@@ -146,7 +146,7 @@ function stopRecording() {
         success: function (res) {
           cntVedio = cntVideo + 1;
           wx.showToast({
-            title: 'upload success',
+            title: 'upload video success',
             icon: 'success',
             duration: 2000
           })
@@ -179,7 +179,7 @@ function takePhoto() {
         success: function (res) {
           cntPhoto = cntPhoto + 1;
           wx.showToast({
-            title: 'upload success',
+            title: 'upload photo success',
             icon: 'success',
             duration: 2000
           })
