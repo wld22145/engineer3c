@@ -3,6 +3,7 @@ var app = getApp()
 var that
 var cntVideo
 var cntPhoto
+
 Page({
   data: {
     text: "slave",
@@ -109,6 +110,7 @@ function scanQRcode() {
     success: (res) => {
       console.log("scanResult")
       console.log(res.result)
+      insertQRcode(res.result)
     },
     fail: (res) => {
       console.log(res)
@@ -189,4 +191,16 @@ function takePhoto() {
       console.error
     }
   })
+}
+
+function insertQRcode(result) {
+  return db.collection('QRcode').add({
+    data: {
+      result: result,
+      time: new Date(),
+    }
+  })
+    .then(function (res) {
+      console.log(res)
+    })
 }

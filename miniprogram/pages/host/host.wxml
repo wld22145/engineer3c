@@ -41,3 +41,5 @@
 <view>
   <button class="instruction" bindtap="stopRecord">stop record</button>
 </view>
+
+

@@ -37,5 +37,9 @@ App({
       time: Date(),
       instruction: '',
     },
+    lastQRcode:{
+      time: Date(),
+      result: '',
+    }
   }
 })

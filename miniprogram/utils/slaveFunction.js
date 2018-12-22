@@ -49,8 +49,7 @@ function listen() {
 
 //keep listening
 function startListening() {
-  var op = listen()
-  if (op) return op;
+  listen()
   setTimeout(startListening, 500)
 }
 
