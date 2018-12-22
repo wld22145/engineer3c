@@ -27,8 +27,17 @@
 </view>
 
 <view>
-  <button class="testInstruction" bindtap="testInstruction">insert test instruction</button>
+  <button class="instruction" bindtap="scanQRcode">scan QRcode</button>
 </view>
 
+<view>
+  <button class="instruction" bindtap="takePhoto">take photo</button>
+</view>
 
+<view>
+  <button class="instruction" bindtap="startRecord">start record</button>
+</view>
 
+<view>
+  <button class="instruction" bindtap="stopRecord">stop record</button>
+</view>

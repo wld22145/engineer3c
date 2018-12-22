@@ -4,11 +4,16 @@ Page({
   data: {
     text: "host"
   },
-  testInstruction : function() {
-    hostFunction.testInstruction()
+  scanQRcode: function() {
+    hostFunction.scanQRcode()
   },
-
-  
-
-
+  takePhoto: function () {
+    hostFunction.takePhoto()
+  },
+  startRecord: function () {
+    hostFunction.startRecord()
+  },
+  stopRecord: function () {
+    hostFunction.stopRecord()
+  }
 })
