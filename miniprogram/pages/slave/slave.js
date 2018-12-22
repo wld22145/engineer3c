@@ -1,6 +1,8 @@
 const db = wx.cloud.database({ env: "test-d49d77" });
 var app = getApp()
 var that
+var cntVideo
+var cntPhoto
 Page({
   data: {
     text: "slave",
@@ -9,6 +11,8 @@ Page({
   onLoad() {
     this.ctx = wx.createCameraContext()
     that = this
+    cntVideo = 0
+    cntPhoto = 0
   },
 
   onListen: function () {
@@ -127,6 +131,7 @@ function stopRecording() {
   console.log("stopRecording")
   that.ctx.stopRecord({
     success: (res) => {
+      console.log(res.tempVideoPath)
       that.setData({
         src: res.tempThumbPath,
         videoSrc: res.tempVideoPath
@@ -134,9 +139,10 @@ function stopRecording() {
 
       console.log("upload video")
       wx.cloud.uploadFile({
-        cloudPath: 'test-d49d77',
+        cloudPath: 'videoFile/'+cntVideo+'.mp4',
         filePath: res.tempVideoPath,
         success: function (res) {
+          cntVedio = cntVideo + 1;
           wx.showToast({
             title: 'upload success',
             icon: 'success',
@@ -144,6 +150,9 @@ function stopRecording() {
           })
         }
       })
+    },
+    fail:(res)=>{
+      console.error
     }
   })
 }
@@ -163,9 +172,10 @@ function takePhoto() {
 
       console.log("upload photo")
       wx.cloud.uploadFile({
-        cloudPath: 'fuck.png',
+        cloudPath: 'imgFile/' + cntPhoto + '.jpg',
         filePath: res.tempImagePath,
         success: function (res) {
+          cntPhoto = cntPhoto + 1;
           wx.showToast({
             title: 'upload success',
             icon: 'success',
