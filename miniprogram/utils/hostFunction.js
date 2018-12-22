@@ -1,11 +1,19 @@
 const db = wx.cloud.database({ env: "test-d49d77" });
 
-function testInstruction() {
-  insertInstruction("test instruction");
+function scanQRcode() {
+  insertInstruction("scanQRcode");
 }
 
-function photo() {
-  insertInstruction("photo");
+function takePhoto() {
+  insertInstruction("takePhoto");
+}
+
+function startRecord() {
+  insertInstruction("startRecord");
+}
+
+function stopRecord() {
+  insertInstruction("stopRecord");
 }
 
 
@@ -22,7 +30,8 @@ function insertInstruction(instruction) {
 }
 
 module.exports = {
-  testInstruction: testInstruction,
-  photo:photo,
-
+  scanQRcode: scanQRcode,
+  takePhoto: takePhoto,
+  startRecord: startRecord,
+  stopRecord: stopRecord
 }
