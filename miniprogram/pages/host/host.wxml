@@ -3,8 +3,41 @@
 </view>
 
 <view>
-  <button class="go-left" bindtap="onGoLeft">go left</button>
+  <navigator class="navigator" url="/pages/gravity/gravity" hover-class="navigator-hover">gravity</navigator>
 </view>
 
+<view>
+  <navigator class="navigator" url="/pages/fourdirections/fourdirections" hover-class="navigator-hover">fourdirections</navigator>
+</view>
 
+<view>
+  <navigator class="navigator" url="/pages/gesture/gesture" hover-class="navigator-hover">gesture</navigator>
+</view>
 
+<view>
+  <navigator class="navigator" url="/pages/asr/asr" hover-class="navigator-hover">asr</navigator>
+</view>
+
+<view>
+  <navigator class="navigator" url="/pages/rocker/rocker" hover-class="navigator-hover">rocker</navigator>
+</view>
+
+<view>
+  <navigator class="navigator" url="/pages/bluetooth/bluetooth" hover-class="navigator-hover">bluetooth</navigator>
+</view>
+
+<view>
+  <button class="instruction" bindtap="scanQRcode">scan QRcode</button>
+</view>
+
+<view>
+  <button class="instruction" bindtap="takePhoto">take photo</button>
+</view>
+
+<view>
+  <button class="instruction" bindtap="startRecord">start record</button>
+</view>
+
+<view>
+  <button class="instruction" bindtap="stopRecord">stop record</button>
+</view>

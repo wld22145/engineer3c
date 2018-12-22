@@ -1,3 +1,5 @@
+var bluetoothFunction = require('../../utils/bluetoothFunction.js');
+
 Page({
   data: {
     startPoint: [0,0],
@@ -18,6 +20,7 @@ Page({
       ctx.setFontSize(50)
       ctx.fillText('停止', 100, 150)
       ctx.draw()
+      bluetoothFunction.stop()
       console.log("stop")
       return 0;
     }
@@ -28,6 +31,7 @@ Page({
       ctx.setFontSize(50)
       ctx.fillText('前进', 100, 150)
       ctx.draw()
+      bluetoothFunction.goAhead()
       console.log("go ahead")
     }
     if (this.data.startPoint[1] < this.data.endPoint[1] && this.data.endPoint[1] - this.data.startPoint[1] > Math.abs(this.data.startPoint[0] - this.data.endPoint[0]))
@@ -36,6 +40,7 @@ Page({
       ctx.setFontSize(50)
       ctx.fillText('后退', 100, 150)
       ctx.draw()
+      bluetoothFunction.goBack()
       console.log("go back")
     }
     if (this.data.startPoint[0] > this.data.endPoint[0] && this.data.startPoint[0] - this.data.endPoint[0] > Math.abs(this.data.startPoint[1] - this.data.endPoint[1]))
@@ -44,6 +49,7 @@ Page({
       ctx.setFontSize(50)
       ctx.fillText('左转', 100, 150)
       ctx.draw()
+      bluetoothFunction.goLeft()
       console.log("go left")
     }
     if (this.data.startPoint[0] < this.data.endPoint[0] && this.data.endPoint[0] - this.data.startPoint[0] > Math.abs(this.data.startPoint[1] - this.data.endPoint[1]))
@@ -52,6 +58,7 @@ Page({
       ctx.setFontSize(50)
       ctx.fillText('右转', 100, 150)
       ctx.draw()
+      bluetoothFunction.goRight()
       console.log("go right")
     }
       

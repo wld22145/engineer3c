@@ -3,5 +3,23 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  margin: 15rpx;
+  margin: 40rpx;
 } 
+
+navigator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 30rpx;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 30rpx;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
