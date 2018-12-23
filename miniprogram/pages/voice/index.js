@@ -395,23 +395,23 @@ Page({
       let lastId = this.data.lastId + 1
       if (res.result === '向左转。' || res.result === '想做爱') {
         console.log('go left')
-        // bluetoothFunction.goLeft()
+        bluetoothFunction.goLeft()
       }
       else if (res.result === '前进。'|| res.result === '亲亲。' ) {
         console.log('go ahead')
-        // bluetoothFunction.goAhead()
+        bluetoothFunction.goAhead()
       }
       else if (res.result === '后退。') {
         console.log('go backward')
-        // bluetoothFunction.goBack()
+        bluetoothFunction.goBack()
       }
       else if (res.result === '向右转。') {
         console.log('go right')
-        // bluetoothFunction.goRight()
+        bluetoothFunction.goRight()
       }
       else if (res.result === '停。') {
         console.log('stop')
-        // bluetoothFunction.stop()
+        bluetoothFunction.stop()
       }
       let currentData = Object.assign({}, this.data.currentTranslate, {
         text: res.result,
