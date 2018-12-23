@@ -20,6 +20,17 @@ function formatTime(date) {
   return [hour, minute, second].map(formatNumber).join(':')
 }
 
+function recordTime(date) {
+
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+
+  var hour = date.getHours()
+  var minute = date.getMinutes()
+
+  return [month, day].map(formatNumber).join('/') + ' ' + [hour, minute].map(formatNumber).join(':')
+}
+
 function formatNumber(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -76,6 +87,7 @@ function getRandomItem(corpusList) {
 
 module.exports = {
   formatTime: formatTime,
+  recordTime: recordTime,
   log: log,
   getUserUnique: getUserUnique,
   getHHMMSS: getHHMMSS,

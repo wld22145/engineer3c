@@ -27,6 +27,10 @@
 </view>
 
 <view>
+  <navigator class="navigator" url="/pages/voice/index" hover-class="navigator-hover">voicecontrol</navigator>
+</view>
+
+<view>
   <button class="instruction" bindtap="scanQRcode">scan QRcode</button>
 </view>
 

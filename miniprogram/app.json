@@ -10,7 +10,8 @@
     "pages/fourdirections/fourdirections",
     "pages/asr/asr",
     "pages/bluetooth/bluetooth",
-    "pages/rocker/rocker"
+    "pages/rocker/rocker",
+    "pages/voice/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -18,5 +19,11 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "云开发 QuickStart",
     "navigationBarTextStyle": "black"
+  },
+  "plugins": {
+    "WechatSI": {
+      "version": "0.0.6",
+      "provider": "wx069ba97219f66d99"
+    }
   }
 }
