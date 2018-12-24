@@ -14,6 +14,9 @@ Page({
       interval: gapTime
     })
     wx.onAccelerometerChange(function (res) {
+      if (res.x > -0.5 && res.x < 0.5 && res.y > -0.5 && res.y < 0.5)
+        console.log("stop")
+        bluetoothFunction.stop()
       if(res.x<-0.5)
         console.log("go left")
         bluetoothFunction.goLeft()

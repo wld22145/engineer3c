@@ -24,9 +24,3 @@
 <view>
   <navigator class="navigator" url="/pages/test/test" hover-class="navigator-hover">test</navigator>
 </view>
-
-
-<view>
-  <navigator class="navigator" url="/pages/voice/index" hover-class="navigator-hover">voice</navigator>
-</view>
-

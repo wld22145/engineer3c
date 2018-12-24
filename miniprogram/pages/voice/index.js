@@ -409,7 +409,7 @@ Page({
         console.log('go right')
         bluetoothFunction.goRight()
       }
-      else if (res.result === '停。') {
+      else if (res.result === '停止。' || res.result === '停。') {
         console.log('stop')
         bluetoothFunction.stop()
       }
