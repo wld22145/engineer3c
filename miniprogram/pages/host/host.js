@@ -3,6 +3,7 @@ const db = wx.cloud.database({ env: "test-d49d77" });
 var app = getApp()
 var qrCodeFlag = true
 var fileIdFlag = true
+var videoFlag = true
 
 Page({
   data: {
@@ -33,6 +34,11 @@ Page({
 
   stopRecord: function () {
     hostFunction.stopRecord()
+    videoFlag = true
+    wx.showLoading({
+      title: 'video uploading',
+    })
+    keepListenVideoId()
   }
 })
 
@@ -139,4 +145,106 @@ function keepListenFileId() {
   listenFileId()
   console.log('listen fileID')
   if (fileIdFlag) setTimeout(keepListenFileId, 1000)
+}
+
+
+
+function getVideoId() {
+  return new Promise(function (resolve, reject) {
+    db.collection("videoID").orderBy('time', 'desc').limit(1).get().then(res => {
+      resolve(res.data)
+    })
+  })
+}
+
+function confirmVideoId(res) {
+  return new Promise(function (resolve, reject) {
+    if (!(res[0].time > app.globalData.lastVideoID.time)
+      && !(res[0].time < app.globalData.lastVideoID.time)
+      && (res[0].videoID == app.globalData.lastVideoID.videoID)) {
+      // old QRcode
+    }
+    else {
+      console.log("new fileID")
+      app.globalData.lastVideoID.time = res[0].time
+      app.globalData.lastVideoID.videoID = res[0].videoID
+      resolve(res[0])
+    }
+  })
+}
+
+function listenVideoId() {
+  getVideoId().then(confirmVideoId).then(function (result) {
+    videoFlag = false
+    wx.hideLoading()
+    wx.showModal({
+      title: 'save video',
+      content: result.videoID,
+      cancelText: 'cancel',
+      confirmText: 'confirm',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.showLoading({
+            title: 'saving video',
+          })
+          // save video
+          wx.cloud.downloadFile({
+            fileID: result.videoID,
+            success: re => {
+              // get temp file path
+              console.log(re.tempFilePath)
+              wx.saveVideoToPhotosAlbum({
+                filePath: re.tempFilePath,
+                success(r) {
+                  console.log(r.errMsg)
+                  wx.hideLoading()
+                  wx.showToast({
+                    title: 'save success',
+                    icon: 'success',
+                    duration: 2000
+                  })
+                },
+                fail(f) {
+                  wx.hideLoading()
+                  wx.showModal({
+                    title: 'save fail',
+                    content: f.errMsg,
+                    showCancel: false,
+                    confirmText: 'confirm',
+                    success(res) {
+                      if (res.confirm) {
+                        console.log('用户点击确定')
+                      }
+                    }
+                  })
+                }
+              })
+            },
+            fail: err => {
+              wx.showModal({
+                title: 'download fail',
+                content: err.errMsg,
+                showCancel: false,
+                confirmText: 'confirm',
+                success(res) {
+                  if (res.confirm) {
+                    console.log('用户点击确定')
+                  }
+                }
+              })
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  }).catch(e => { console.error(e) });
+}
+
+function keepListenVideoId() {
+  listenVideoId()
+  console.log('listen videoID')
+  if (videoFlag) setTimeout(keepListenVideoId, 1000)
 }

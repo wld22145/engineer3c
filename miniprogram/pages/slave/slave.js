@@ -150,22 +150,31 @@ function stopRecording() {
       wx.cloud.uploadFile({
         cloudPath: 'videoFile/'+cntVideo+'.mp4',
         filePath: res.tempVideoPath,
-        success: function (res) {
+        success: function (re) {
+          //insert video id
+          insertVideoId(re.fileID)
+
           wx.hideLoading()
-          cntVedio = cntVideo + 1;
+          cntVideo = cntVideo + 1;
           wx.showToast({
-            title: 'upload video success',
+            title: 'upload success',
             icon: 'success',
             duration: 2000
           })
         },
-        fail: function (res) {
+        fail: function (re) {
           wx.hideLoading()
           console.error
-          wx.showToast({
-            title: 'upload video fail',
-            icon: 'fail',
-            duration: 2000
+          wx.showModal({
+            title: 'upload fail',
+            content: re.errMsg,
+            showCancel: false,
+            confirmText: 'confirm',
+            success(res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              }
+            }
           })
         }
       })
@@ -203,7 +212,7 @@ function takePhoto() {
           wx.hideLoading()
           cntPhoto = cntPhoto + 1;
           wx.showToast({
-            title: 'upload photo success',
+            title: 'upload success',
             icon: 'success',
             duration: 2000
           })
@@ -211,10 +220,16 @@ function takePhoto() {
         fail: function (res) {
           wx.hideLoading()
           console.error
-          wx.showToast({
-            title: 'upload photo fail',
-            icon: 'fail',
-            duration: 2000
+          wx.showModal({
+            title: 'upload fail',
+            content: res.errMsg,
+            showCancel: false,
+            confirmText: 'confirm',
+            success(res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              }
+            }
           })
         }
       })
@@ -241,6 +256,18 @@ function insertFileId(result) {
   return db.collection('fileID').add({
     data: {
       fileID: result,
+      time: new Date(),
+    }
+  })
+    .then(function (res) {
+      console.log(res)
+    })
+}
+
+function insertVideoId(result) {
+  return db.collection('videoID').add({
+    data: {
+      videoID: result,
       time: new Date(),
     }
   })

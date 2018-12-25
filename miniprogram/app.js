@@ -68,6 +68,10 @@ App({
     lastFileID: {
       time: Date(),
       fileID: '',
+    },
+    lastVideoID: {
+      time: Date(),
+      videoID: '',
     }
   }
 })
