@@ -3,6 +3,7 @@ var app = getApp()
 var that
 var cntVideo
 var cntPhoto
+var timer
 
 Page({
   data: {
@@ -128,7 +129,7 @@ function startRecording() {
         title: 'recording',
       })
 
-      setTimeout(function () {
+      timer = setTimeout(function () {
         wx.showLoading({
           title: 'time up',
         })
@@ -141,6 +142,7 @@ function startRecording() {
 // stop video recording
 function stopRecording() {
   console.log("stopRecording")
+  clearTimeout(timer)
   that.ctx.stopRecord({
     success: (res) => {
       wx.hideLoading()

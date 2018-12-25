@@ -265,7 +265,6 @@ function timing30s() {
     })
 
     if (t == 30) {
-      wx.hideLoading()
       clearInterval(timer)
       videoFlag = true
       wx.showLoading({
@@ -274,7 +273,6 @@ function timing30s() {
       keepListenVideoId()
     }
     else if (stop) {
-      wx.hideLoading()
       wx.showLoading({
         title: 'video uploading',
       })
