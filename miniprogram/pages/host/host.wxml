@@ -3,6 +3,10 @@
 </view>
 
 <view>
+  <navigator class="navigator" url="/pages/bluetooth/bluetooth" hover-class="navigator-hover">bluetooth</navigator>
+</view>
+
+<view>
   <navigator class="navigator" url="/pages/gravity/gravity" hover-class="navigator-hover">gravity</navigator>
 </view>
 
@@ -15,20 +19,14 @@
 </view>
 
 <view>
-  <navigator class="navigator" url="/pages/asr/asr" hover-class="navigator-hover">asr</navigator>
-</view>
-
-<view>
   <navigator class="navigator" url="/pages/rocker/rocker" hover-class="navigator-hover">rocker</navigator>
-</view>
-
-<view>
-  <navigator class="navigator" url="/pages/bluetooth/bluetooth" hover-class="navigator-hover">bluetooth</navigator>
 </view>
 
 <view>
   <navigator class="navigator" url="/pages/voice/index" hover-class="navigator-hover">voicecontrol</navigator>
 </view>
+
+
 
 <view>
   <button class="instruction" bindtap="scanQRcode">scan QRcode</button>

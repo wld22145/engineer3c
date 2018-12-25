@@ -64,6 +64,10 @@ App({
     lastQRcode:{
       time: Date(),
       result: '',
+    },
+    lastFileID: {
+      time: Date(),
+      fileID: '',
     }
   }
 })
