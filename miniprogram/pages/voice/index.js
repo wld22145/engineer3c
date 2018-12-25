@@ -393,33 +393,32 @@ Page({
       }
 
       let lastId = this.data.lastId + 1
-      if (res.result === '向左转。' || res.result === '想做爱') {
-        console.log('go left')
-        bluetoothFunction.goLeft()
-      }
-      else if (res.result === '前进。'|| res.result === '亲亲。' ) {
-        console.log('go ahead')
-        bluetoothFunction.goAhead()
-      }
-      else if (res.result === '后退。') {
-        console.log('go backward')
-        bluetoothFunction.goBack()
-      }
-      else if (res.result === '向右转。') {
-        console.log('go right')
-        bluetoothFunction.goRight()
-      }
-      else if (res.result === '停止。' || res.result === '停。') {
-        console.log('stop')
-        bluetoothFunction.stop()
-      }
       let currentData = Object.assign({}, this.data.currentTranslate, {
         text: res.result,
         translateText: '正在翻译中',
         id: lastId,
         voicePath: res.tempFilePath
       })
-
+      if (res.result === '向左转。' || res.result === 'Turn left. ') {
+        console.log('go left')
+        //bluetoothFunction.goLeft()
+      }
+      else if (res.result === '前进。' || res.result === 'Go forward. ') {
+        console.log('go ahead')
+        //bluetoothFunction.goAhead()
+      }
+      else if (res.result === '后退。' || res.result === 'Go back. ') {
+        console.log('go backward')
+        //bluetoothFunction.goBack()
+      }
+      else if (res.result === '向右转。' || res.result === 'Turn right. ') {
+        console.log('go right')
+        //bluetoothFunction.goRight()
+      }
+      else if (res.result === '停止。' || res.result === 'Stop. ') {
+        console.log('stop')
+        //bluetoothFunction.stop()
+      }
       this.setData({
         currentTranslate: currentData,
         recordStatus: 1,
