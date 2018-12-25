@@ -22,5 +22,5 @@
 </view>
 
 <view>
-  <navigator class="navigator" url="/pages/test/test" hover-class="navigator-hover">test</navigator>
+  <button class="instruction" bindtap="clearStorage" hover-class="navigator-hover">clear storage</button>
 </view>

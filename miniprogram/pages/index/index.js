@@ -45,6 +45,24 @@ Page({
         userInfo: e.detail.userInfo
       })
     }
-  }
+  },
+
+  clearStorage: function () {
+    try {
+      wx.clearStorageSync()
+    } catch (e) {
+      wx.showModal({
+        title: 'clear fail',
+        content: e.errMsg,
+        showCancel: false,
+        confirmText: 'confirm',
+        success(res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          }
+        }
+      })
+    }
+  },
 })
 
