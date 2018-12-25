@@ -124,6 +124,9 @@ function startRecording() {
   that.ctx.startRecord({
     success: (res) => {
       console.log('startRecord success')
+      wx.showLoading({
+        title: 'recording',
+      })
     }
   })
 }
@@ -133,6 +136,7 @@ function stopRecording() {
   console.log("stopRecording")
   that.ctx.stopRecord({
     success: (res) => {
+      wx.hideLoading()
       console.log(res.tempVideoPath)
       that.setData({
         src: res.tempThumbPath,
@@ -140,14 +144,27 @@ function stopRecording() {
       })
 
       console.log("upload video")
+      wx.showLoading({
+        title: 'uploading video',
+      })
       wx.cloud.uploadFile({
         cloudPath: 'videoFile/'+cntVideo+'.mp4',
         filePath: res.tempVideoPath,
         success: function (res) {
+          wx.hideLoading()
           cntVedio = cntVideo + 1;
           wx.showToast({
             title: 'upload video success',
             icon: 'success',
+            duration: 2000
+          })
+        },
+        fail: function (res) {
+          wx.hideLoading()
+          console.error
+          wx.showToast({
+            title: 'upload video fail',
+            icon: 'fail',
             duration: 2000
           })
         }
@@ -162,6 +179,9 @@ function stopRecording() {
 // take photo
 function takePhoto() {
   console.log("takePhoto")
+  wx.showLoading({
+    title: 'uploading photo',
+  })
   //let that = this
   //let ctx = wx.createCameraContext()
   that.ctx.takePhoto({
@@ -177,6 +197,10 @@ function takePhoto() {
         cloudPath: 'imgFile/' + cntPhoto + '.jpg',
         filePath: res.tempImagePath,
         success: function (res) {
+          //insert file id
+          insertFileId(res.fileID)
+
+          wx.hideLoading()
           cntPhoto = cntPhoto + 1;
           wx.showToast({
             title: 'upload photo success',
@@ -184,7 +208,15 @@ function takePhoto() {
             duration: 2000
           })
         },
-        fail: console.error
+        fail: function (res) {
+          wx.hideLoading()
+          console.error
+          wx.showToast({
+            title: 'upload photo fail',
+            icon: 'fail',
+            duration: 2000
+          })
+        }
       })
     },
     fail: (res) => {
@@ -197,6 +229,18 @@ function insertQRcode(result) {
   return db.collection('QRcode').add({
     data: {
       result: result,
+      time: new Date(),
+    }
+  })
+    .then(function (res) {
+      console.log(res)
+    })
+}
+
+function insertFileId(result) {
+  return db.collection('fileID').add({
+    data: {
+      fileID: result,
       time: new Date(),
     }
   })
