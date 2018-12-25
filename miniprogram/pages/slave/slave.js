@@ -127,6 +127,13 @@ function startRecording() {
       wx.showLoading({
         title: 'recording',
       })
+
+      setTimeout(function () {
+        wx.showLoading({
+          title: 'time up',
+        })
+        stopRecording()
+      }, 29000);
     }
   })
 }

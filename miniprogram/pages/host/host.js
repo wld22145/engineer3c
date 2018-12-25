@@ -4,6 +4,7 @@ var app = getApp()
 var qrCodeFlag = true
 var fileIdFlag = true
 var videoFlag = true
+var stop = false
 
 Page({
   data: {
@@ -30,14 +31,13 @@ Page({
 
   startRecord: function () {
     hostFunction.startRecord()
+    timing30s()
   },
 
   stopRecord: function () {
+    stopTiming30s()
     hostFunction.stopRecord()
     videoFlag = true
-    wx.showLoading({
-      title: 'video uploading',
-    })
     keepListenVideoId()
   }
 })
@@ -247,4 +247,42 @@ function keepListenVideoId() {
   listenVideoId()
   console.log('listen videoID')
   if (videoFlag) setTimeout(keepListenVideoId, 1000)
+}
+
+
+function timing30s() {
+  stop = false
+  t = 0;
+  wx.showLoading({
+    title: t + 's',
+  })
+
+  timer = setInterval(function () {
+    t = t + 1
+    //wx.hideLoading()
+    wx.showLoading({
+      title: t + 's',
+    })
+
+    if (t == 30) {
+      wx.hideLoading()
+      clearInterval(timer)
+      videoFlag = true
+      wx.showLoading({
+        title: 'video uploading',
+      })
+      keepListenVideoId()
+    }
+    else if (stop) {
+      wx.hideLoading()
+      wx.showLoading({
+        title: 'video uploading',
+      })
+      clearInterval(timer)
+    }
+  }, 1000);
+}
+
+function stopTiming30s() {
+  stop = true
 }
