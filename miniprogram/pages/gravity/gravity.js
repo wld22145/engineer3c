@@ -1,6 +1,6 @@
 var bluetoothFunction = require('../../utils/bluetoothFunction.js');
 
-const gapTime = 500;
+const gapTime = 250;
 var timer;
 
 Page({
