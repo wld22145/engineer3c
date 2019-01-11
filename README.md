@@ -1,12 +1,12 @@
-# 云开发 quickstart
+上海交通大学 Shanghai Jiao Tong University SJTU
+EI312 工程实践与科技创新Ⅲ-C 工科创3c engineer3c
 
-这是云开发的快速启动指引，其中演示了如何上手使用云开发的三大基础能力：
+项目简介:
+基于微信小程序的小车控制以及从机控制
 
-- 数据库：一个既可在小程序前端操作，也能在云函数中读写的 JSON 文档型数据库
-- 文件存储：在小程序前端直接上传/下载云端文件，在云开发控制台可视化管理
-- 云函数：在云端运行的代码，微信私有协议天然鉴权，开发者只需编写业务逻辑代码
+项目结构：
+miniprogram ：主机端以及从机端的小程序
+hardware ：小车单片机代码以及hex文件
 
-## 参考文档
-
-- [云开发文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/basis/getting-started.html)
-
+作者：
+王凌冬 陈志杰 段勇帅 朱煜烨
